@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Roopitha!</title>
+    <style>
+        /* General body styling */
+        body {
+            background: url('file:///C:/Users/Rajamahendra/Downloads/enhanced_pencil_sketch_bg.jpg') no-repeat center center/cover;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            color: #fff;
+            padding: 5vh 5vw;
+            margin: 0;
+        }
+
+        /* Styling for header */
+        h1 {
+            font-size: calc(2rem + 2vh);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        h2 {
+            font-size: calc(1.5rem + 1vh);
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Balloon container styling */
+        .balloon-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2vw;
+        }
+
+        /* Individual balloon styling */
+        .balloon {
+            width: 90px;
+            height: 120px;
+            background: linear-gradient(to bottom, #8b8b8b, #d3d3d3);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c2c2c;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            box-shadow: inset -3px -3px 8px rgba(255, 255, 255, 0.8), 3px 3px 10px rgba(0, 0, 0, 0.4);
+            animation: float 4s ease-in-out infinite;
+            transition: transform 0.3s;
+        }
+
+        /* Balloon hover effect */
+        .balloon:hover {
+            transform: scale(1.1) rotate(-5deg);
+            background: linear-gradient(to bottom, #a5a5a5, #f2f2f2);
+        }
+
+        /* Balloon string styling */
+        .balloon::after {
+            content: '';
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: #ccc;
+            transform: translateX(-50%);
+        }
+
+        /* Floating effect animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Styling for notes */
+        .note {
+            display: none;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Media query for landscape mode */
+        @media (orientation: landscape) {
+            .balloon-container {
+                justify-content: space-evenly;
+            }
+        }
+
+        /* Styling for the memory game area */
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(4, 120px);
+            grid-gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Memory card styling */
+        .card {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(145deg, #e0e0e0, #f9f9f9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: #333;
+            border-radius: 15px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        /* Flipped card styling */
+        .card.flipped {
+            background-color: #ffffff;
+            pointer-events: none;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Hover effect for memory cards */
+        .card:hover {
+            background: linear-gradient(145deg, #f4f4f4, #d9d9d9);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Message styling for game result */
+        #message {
+            font-size: 1.5rem;
+            text-align: center;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        /* Victory message styling */
+        .victory-message {
+            font-size: 1.8rem;
+            color: #4caf50;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Happy Birthday, Roopitha!</h1>
+    <h2>Each balloon reveals a special memory for you!</h2>
+
+    <!-- Balloon container -->
+    <div class="balloon-container">
+        <div class="balloon" onclick="revealNote(1)">R</div>
+        <div class="balloon" onclick="revealNote(2)">O</div>
+        <div class="balloon" onclick="revealNote(3)">O</div>
+        <div class="balloon" onclick="revealNote(4)">P</div>
+        <div class="balloon" onclick="revealNote(5)">I</div>
+        <div class="balloon" onclick="revealNote(6)">T</div>
+        <div class="balloon" onclick="revealNote(7)">H</div>
+        <div class="balloon" onclick="revealNote(8)">A</div>
+    </div>
+
+    <!-- Notes container -->
+    <div id="note1" class="note">"R: Remember our crazy adventures? They’re unforgettable!"</div>
+    <div id="note2" class="note">"O: Our long talks under the stars were magical."</div>
+    <div id="note3" class="note">"O: Out of everyone, you’ve always been my favorite!"</div>
+    <div id="note4" class="note">"P: Parties with you are always legendary!"</div>
+    <div id="note5" class="note">"I: I cherish the laughs we’ve shared over silly things."</div>
+    <div id="note6" class="note">"T: Time spent with you is always the best."</div>
+    <div id="note7" class="note">"H: How can I forget your kindness and support?"</div>
+    <div id="note8" class="note">"A: Amazing memories, all thanks to you!"</div>
+
+    <!-- Memory game -->
+    <div class="game-container" id="gameContainer"></div>
+    <p id="message"></p>
+
+    <script>
+        let currentNote = null;
+
+        // Function to reveal notes
+        function revealNote(number) {
+            if (currentNote) {
+                currentNote.style.display = 'none';
+            }
+            const newNote = document.getElementById(`note${number}`);
+            newNote.style.display = 'block';
+            currentNote = newNote;
+        }
+
+        // Function to create memory cards
+        const memoryCards = [
+            "🎸", "🎤", "💃", "🎹",
+            "🎸", "🎤", "💃", "🎹",
+            "🌟", "❤️", "✨", "🎶",
+            "🌟", "❤️", "✨", "🎶"
+        ];
+
+        let shuffledCards = memoryCards.sort(() => 0.5 - Math.random());
+        const gameContainer = document.getElementById("gameContainer");
+        let firstCard = null;
+        let secondCard = null;
+        let matchedPairs = 0;
+
+        function createCard(content) {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.textContent = content;
+            card.dataset.value = content;
+
+            card.addEventListener("click", () => {
+                card.classList.add("flipped");
+                if (!firstCard) {
+                    firstCard = card;
+                } else {
+                    secondCard = card;
+                    checkMatch();
+                }
+            });
+
+            return card;
+        }
+
+        function checkMatch() {
+            if (firstCard.dataset.value === secondCard.dataset.value) {
+                firstCard.classList.add("hidden");
+                secondCard.classList.add("hidden");
+                matchedPairs++;
+                resetCards();
+                if (matchedPairs === memoryCards.length / 2) {
+                    document.getElementById("message").innerHTML = "<span class='victory-message'>Congratulations, you’re really smart!</span>";
+                }
+            } else {
+                setTimeout(() => {
+                    firstCard.classList.remove("flipped");
+                    secondCard.classList.remove("flipped");
+                    resetCards();
+                }, 1000);
+            }
+        }
+
+        function resetCards() {
+            firstCard = null;
+            secondCard = null;
+        }
+
+        function initGame() {
+            shuffledCards.forEach((symbol) => {
+                const card = createCard(symbol);
+                gameContainer.appendChild(card);
+            });
+        }
+
+        initGame();
+    </script>
+
+</body>
+</html>
